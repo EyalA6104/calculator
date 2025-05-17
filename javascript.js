@@ -18,9 +18,9 @@ function divide(a, b) {
 };
 console.log(divide(8, 4));
 
-let firstNum = 1
-let operator = "+"
-let secondNum = 2
+let firstNum = null
+let operator = null
+let secondNum = null
 
 function operate (operator, a, b) {
     if (operator === "+") {
@@ -35,4 +35,29 @@ function operate (operator, a, b) {
         return "Error";
     }
 };
-console.log(operate("*", 6, 2))
+console.log(operate("*", 6, 2));
+
+let displayValue = "";
+const digitButtons = document.querySelectorAll(".digit");
+const display = document.querySelector("#display");
+const operatorButtons = document.querySelectorAll(".operator");
+
+
+digitButtons.forEach((digitButton) => {
+  digitButton.addEventListener("click", () => {
+    displayValue += digitButton.textContent;
+    display.textContent = displayValue;
+  });
+});
+
+operatorButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (displayValue === "") return; 
+
+    firstNum = Number(displayValue);
+    operator = button.textContent;
+    displayValue = "";
+  });
+});
+
+
