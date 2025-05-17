@@ -8,26 +8,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="display"></div>
-    <div class="buttons">
-        <button class="general-button backspace">Back</button>
-        <button class="general-button clear">AC</button>
-        <button class="operator">÷</button>
-        <button class="digit">7</button>
-        <button class="digit">8</button>
-        <button class="digit">9</button>
-        <button class="operator">x</button>
-        <button class="digit">4</button>
-        <button class="digit">5</button>
-        <button class="digit">6</button>
-        <button class="operator">-</button>
-        <button class="digit">1</button>
-        <button class="digit">2</button>
-        <button class="digit">3</button>
-        <button class="operator">+</button> 
-        <button class="general-button decimal-point">.</button>  
-        <button class="digit">0</button>
-        <button class="equal">=</button>
+  <div class="calculator">
+    <div id="display">0</div>
+
+    <div class="row">
+      <button class="button clear double">AC</button>
+      <button class="button backspace">⌫</button>
+      <button class="button operator">÷</button>
     </div>
+
+    <div class="row">
+      <button class="button digit">7</button>
+      <button class="button digit">8</button>
+      <button class="button digit">9</button>
+      <button class="button operator">x</button>
+    </div>
+
+    <div class="row">
+      <button class="button digit">4</button>
+      <button class="button digit">5</button>
+      <button class="button digit">6</button>
+      <button class="button operator">-</button>
+    </div>
+
+    <div class="row">
+      <button class="button digit">1</button>
+      <button class="button digit">2</button>
+      <button class="button digit">3</button>
+      <button class="button operator">+</button>
+    </div>
+
+    <div class="row">
+      <button class="button digit">0</button>
+      <button class="button digit">.</button>
+      <button class="button equal double">=</button>
+    </div>
+  </div>
 </body>
 </html>

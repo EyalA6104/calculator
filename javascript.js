@@ -74,19 +74,32 @@ operatorButtons.forEach((operatorButton) => {
   });
 });
 
+function divide(a, b) {
+    if (b === 0) {
+        return "Error";
+    }
+    return a / b;
+}
+
 
 const equalButton = document.querySelector(".equal");
 
 equalButton.addEventListener("click", () => {
-  if (firstNum !== null && operator !== null && displayValue !== "") {
-    secondNum = Number(displayValue);
-    const result = operate(operator, firstNum, secondNum);
-    display.textContent = result;
-    displayValue = result.toString();
-    firstNum = null;
-    operator = null;
-    secondNum = null;
-  }
+    if (firstNum !== null && operator !== null && displayValue !== "") {
+        secondNum = Number(displayValue);
+        const result = operate(operator, firstNum, secondNum);
+
+        if (result === "Error") {
+            display.textContent = "Cannot divide by zero";
+        } else {
+            display.textContent = result;
+            displayValue = result.toString();
+        }
+
+        firstNum = null;
+        operator = null;
+        secondNum = null;
+    }
 });
 
 const clearButton = document.querySelector(".clear");
@@ -97,6 +110,4 @@ clearButton.addEventListener("click", () => {
     operator = null;
     displayValue = "";
     display.textContent = "";
-})
-
-
+});
