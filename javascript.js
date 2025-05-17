@@ -27,15 +27,15 @@ function operate (operator, a, b) {
         return add(a, b);
     } else if (operator === "-") {
         return subtract(a, b);
-    } else if (operator === "*") {
+    } else if (operator === "x") {
         return multiply(a, b);
-    } else if (operator === "/") {
+    } else if (operator === "÷") {
         return divide(a, b);
     } else {
         return "Error";
     }
 };
-console.log(operate("*", 6, 2));
+console.log(operate("x", 6, 2));
 
 let displayValue = "";
 const digitButtons = document.querySelectorAll(".digit");
@@ -50,14 +50,53 @@ digitButtons.forEach((digitButton) => {
   });
 });
 
-operatorButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (displayValue === "") return; 
+operatorButtons.forEach((operatorButton) => {
+  operatorButton.addEventListener("click", () => {
+    if (displayValue === "") {
+      operator = operatorButton.textContent;
+      console.log("Updated operator to:", operator);
+      return;
+    }
 
-    firstNum = Number(displayValue);
-    operator = button.textContent;
-    displayValue = "";
+    if (firstNum !== null && operator !== null) {
+      secondNum = Number(displayValue);
+      const result = operate(operator, firstNum, secondNum);
+      display.textContent = result;
+      firstNum = result;
+      displayValue = "";
+    } else {
+      firstNum = Number(displayValue);
+      displayValue = "";
+    }
+
+    operator = operatorButton.textContent;
+    console.log("Operator set to:", operator);
   });
 });
+
+
+const equalButton = document.querySelector(".equal");
+
+equalButton.addEventListener("click", () => {
+  if (firstNum !== null && operator !== null && displayValue !== "") {
+    secondNum = Number(displayValue);
+    const result = operate(operator, firstNum, secondNum);
+    display.textContent = result;
+    displayValue = result.toString();
+    firstNum = null;
+    operator = null;
+    secondNum = null;
+  }
+});
+
+const clearButton = document.querySelector(".clear");
+
+clearButton.addEventListener("click", () => {
+    firstNum = null;
+    secondNum = null;
+    operator = null;
+    displayValue = "";
+    display.textContent = "";
+})
 
 
